@@ -1,6 +1,7 @@
 let firstNum = 0;
 let secNum = 0;
 let numIndicator = "first";
+let numEntered = "false";
 let operator;
 let displayValue = "Example Text";
 
@@ -45,6 +46,9 @@ const operate = function (firstNum, secNum, operator) {
     return solution;
   }
   if (operator == "/") {
+    if (secNum === 0) {
+      return Infinity;
+    }
     solution = divide(firstNum, secNum);
     solution = Math.round(solution * 100) / 100;
     return solution;
@@ -79,6 +83,7 @@ buttons.forEach((button) => {
     button.addEventListener("click", () => {
       if (numIndicator === "first") {
         firstNum += button.id;
+        numEntered = "true";
         display(button.id);
       }
       if (numIndicator === "second") {
@@ -89,7 +94,7 @@ buttons.forEach((button) => {
   }
   if (button.className === "op") {
     button.addEventListener("click", () => {
-      if (numIndicator === "first") {
+      if (numIndicator === "first" && numEntered == "true") {
         firstNum = Number(firstNum);
         numIndicator = "second";
         operator = button.id;
@@ -109,6 +114,7 @@ buttons.forEach((button) => {
     button.addEventListener("click", () => {
       firstNum = 0;
       secNum = 0;
+      numEntered = "false"
       numIndicator = "first";
       removeElementsByClass("para");
     });
