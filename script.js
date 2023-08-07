@@ -2,6 +2,7 @@ let firstNum = 0;
 let secNum = 0;
 let numIndicator = "first";
 let numEntered = "false";
+let secNumEntered = "false";
 let operator;
 let displayValue = "Example Text";
 
@@ -88,6 +89,7 @@ buttons.forEach((button) => {
       }
       if (numIndicator === "second") {
         secNum += button.id;
+        secNumEntered = "true";
         display(button.id);
       }
     });
@@ -104,17 +106,20 @@ buttons.forEach((button) => {
   }
   if (button.className === "equal") {
     button.addEventListener("click", () => {
-      secNum = Number(secNum);
-      numIndicator = "NA";
-      display(button.id)
-      display(operate(firstNum, secNum, operator));
+      if (secNumEntered === "true") {
+        secNum = Number(secNum);
+        numIndicator = "NA";
+        display(button.id);
+        display(operate(firstNum, secNum, operator));
+      }
     });
   }
   if (button.className === "clr") {
     button.addEventListener("click", () => {
       firstNum = 0;
       secNum = 0;
-      numEntered = "false"
+      numEntered = "false";
+      secNumEntered = "false";
       numIndicator = "first";
       removeElementsByClass("para");
     });
