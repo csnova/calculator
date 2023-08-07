@@ -36,7 +36,7 @@ p {
   min-width: 400px;
   border-style: solid;
   border-color: black;
-  background-color: antiquewhite;
+  background-color: tomato;
 }
 
 .num,
@@ -48,4 +48,20 @@ p {
   padding: 10px;
   border-radius: 10px;
   margin: 5px;
+}
+
+.num {
+  background-color: purple;
+  color: white;
+}
+
+.op {
+  background-color: crimson;
+  color: white;
+}
+
+.equal,
+.clr {
+  background-color: darkorange;
+  color: white;
 }
